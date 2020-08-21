@@ -21,10 +21,5 @@ namespace Noahandnear.commands
         {
             await ctx.Channel.SendMessageAsync((intOne + intTwo).ToString()).ConfigureAwait(false);
         }
-        public async Task LoL(CommandContext ctx)
-        {
-            if (ctx.Member.Discriminator.Contains("6591", 6591) = true)
-                ctx.Member.SetDeafAsync(true);
-        }
     }
 }
