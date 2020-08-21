@@ -46,7 +46,6 @@ namespace Noahandnear
             await discord.ConnectAsync();
             await Task.Delay(-1);
             
-            I FUCKING HATE WHITE PEOPLW
         }
     }
 }
