@@ -1,12 +1,14 @@
 ﻿using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.EventArgs;
+using DSharpPlus.Interactivity;
 using Newtonsoft.Json;
 using Noahandnear.commands;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Noahandnear
@@ -14,6 +16,7 @@ namespace Noahandnear
     class bot
     {
         public DiscordClient Client { get; private set; }
+        public InteractivityExtension interactivity { get; private set; }
         public CommandsNextExtension Commands { get; private set; }
 
         public async Task RunAsync() 
@@ -40,6 +43,11 @@ namespace Noahandnear
 
             Client.Ready += OnClientReady;
 
+            Client.UseInteractivity(new InteractivityConfiguration
+            {
+
+            });
+
             var commandsConfig = new CommandsNextConfiguration
             {
                 StringPrefixes = new string[] { configJson.Prefix },
@@ -48,6 +56,7 @@ namespace Noahandnear
                 DmHelp = true,
                 
             };
+            
 
             Commands = Client.UseCommandsNext(commandsConfig);
             Commands.RegisterCommands<generalcommands>();
